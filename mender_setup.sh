@@ -62,9 +62,9 @@ sudo docker volume inspect --format '{{.Mountpoint}}' mender-artifacts
 echo "[*] Configuring server..."
 pushd ./production &> /dev/null
 sed -i \
-  -e "s|{{MENDER_HOST}}|${1}" \
-  -e "s|{{MENDER_ARTIFACTS_HOST}}|${2}" \
-  -e "s|{{MINIO_SECRET_KEY}}|${3}" \
+  -e "s|{{MENDER_HOST}}|${1}|g" \
+  -e "s|{{MENDER_ARTIFACTS_HOST}}|${2}|g" \
+  -e "s|{{MINIO_SECRET_KEY}}|${3}|g" \
   ./prod.yml
 
 # Create start up certificates.
