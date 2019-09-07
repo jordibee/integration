@@ -37,7 +37,6 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 sudo apt-get update && sudo apt-get install -y docker-ce
-sudo groupadd docker
 sudo usermod -a -G docker $USER
 sudo systemctl enable docker
 sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
