@@ -59,5 +59,6 @@ VOLUME [ "/etc/resty-auto-ssl" ]
 
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY extra-entrypoint.sh /extra-entrypoint.sh
+RUN chmod +x /extra-entrypoint.sh
 
 ENTRYPOINT [ "/extra-entrypoint.sh" ]
