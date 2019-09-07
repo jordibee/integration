@@ -37,9 +37,12 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 sudo apt-get update && sudo apt-get install -y docker-ce
+sudo groupadd docker
+sudo usermod -a -G docker $USER
 sudo systemctl enable docker
 sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+sudo usermod -a -G docker $USER
 
 # Format and mount drive we will be using to store artifacts.
 echo "[*] Formatting and mounting artifacts drive..."
@@ -74,5 +77,5 @@ CERT_API_CN=${1} CERT_STORAGE_CN=${2} ../keygen
 
 # Start the server.
 echo "[*] Starting server..."
-sudo ./run up -d
+./run up -d
 popd &> /dev/null
