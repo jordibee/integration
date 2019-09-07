@@ -74,5 +74,5 @@ CERT_API_CN=${1} CERT_STORAGE_CN=${2} ../keygen
 
 # Start the server.
 echo "[*] Starting server..."
-./run up -d
+sudo ./run up -d
 popd &> /dev/null
