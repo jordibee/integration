@@ -88,8 +88,6 @@ services:
             # API Gateway certs for fallback during the startup phase
             - ./production/keys-generated/certs/api-gateway/cert.crt:/var/www/mendersoftware/cert/cert.crt:ro
             - ./production/keys-generated/certs/api-gateway/private.key:/var/www/mendersoftware/cert/private.key:ro
-            # Certificates volume for Let's Encrypt
-            - mender-api-gateway-actual-certs:/etc/resty-auto-ssl
         logging:
             options:
                 max-file: "10"
@@ -170,8 +168,3 @@ volumes:
       external:
           # use external volume created manually
           name: mender-redis-db
-    # Let's Encrypt certificates are stored here.
-    mender-api-gateway-actual-certs:
-      external:
-        # use external volume created manually
-        name: mender-api-gateway-actual-certs
